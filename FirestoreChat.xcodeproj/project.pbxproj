@@ -1,0 +1,575 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		84815547215D68600082F61B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84815546215D68600082F61B /* AppDelegate.swift */; };
+		84815549215D68600082F61B /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84815548215D68600082F61B /* ChatsViewController.swift */; };
+		8481554C215D68610082F61B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8481554A215D68610082F61B /* Main.storyboard */; };
+		8481554E215D68610082F61B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8481554D215D68610082F61B /* Assets.xcassets */; };
+		84815551215D68610082F61B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8481554F215D68610082F61B /* LaunchScreen.storyboard */; };
+		8481555E215D719B0082F61B /* ChatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481555D215D719B0082F61B /* ChatsViewModel.swift */; };
+		84815560215D72380082F61B /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481555F215D72380082F61B /* Chat.swift */; };
+		84815563215D7F8A0082F61B /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84815562215D7F8A0082F61B /* ChatMessage.swift */; };
+		84815565215D7FC00082F61B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84815564215D7FC00082F61B /* User.swift */; };
+		84815567215D86B20082F61B /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84815566215D86B20082F61B /* UsersViewController.swift */; };
+		84815569215D8C890082F61B /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84815568215D8C890082F61B /* ChatViewController.swift */; };
+		8481556B215D93F70082F61B /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481556A215D93F70082F61B /* ChatViewModel.swift */; };
+		8481556D215D947A0082F61B /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481556C215D947A0082F61B /* UsersViewModel.swift */; };
+		8481556F215D9F9C0082F61B /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481556E215D9F9C0082F61B /* ChatTableViewCell.swift */; };
+		84815571215DA1400082F61B /* ChatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84815570215DA1400082F61B /* ChatsTableViewCell.swift */; };
+		84815573215DA2110082F61B /* UsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84815572215DA2110082F61B /* UsersTableViewCell.swift */; };
+		848157642162B16100DA34D2 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848157632162B16100DA34D2 /* UserDetailViewController.swift */; };
+		848157662162B42100DA34D2 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848157652162B42100DA34D2 /* UserViewModel.swift */; };
+		848157682162C51200DA34D2 /* ChatInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848157672162C51200DA34D2 /* ChatInfoViewController.swift */; };
+		8481576A2162C5C800DA34D2 /* ChatInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848157692162C5C800DA34D2 /* ChatInfoViewModel.swift */; };
+		84853D982161126600520DA8 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84853D972161126600520DA8 /* ViewModel.swift */; };
+		8488A470216366B90026BDCF /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8488A46F216366B90026BDCF /* UIImageView.swift */; };
+		848B0BD1215E2332005EF920 /* FireStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848B0BD0215E2332005EF920 /* FireStoreService.swift */; };
+		849A74002161B7EC00D57CEF /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849A73FF2161B7EC00D57CEF /* MessageViewModel.swift */; };
+		849B02B1216267DF00079DF3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849B02B0216267DF00079DF3 /* ProfileViewController.swift */; };
+		84C70332215E018C0007DE20 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84C70331215E018B0007DE20 /* GoogleService-Info.plist */; };
+		98C8729B08EA0D87BA63DA68 /* Pods_FirestoreChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFC69597383BE27BAD6FFE34 /* Pods_FirestoreChat.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		74BB0920656F93E961701087 /* Pods-FirestoreChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirestoreChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-FirestoreChat/Pods-FirestoreChat.release.xcconfig"; sourceTree = "<group>"; };
+		84815543215D68600082F61B /* FirestoreChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirestoreChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		84815546215D68600082F61B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		84815548215D68600082F61B /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
+		8481554B215D68610082F61B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8481554D215D68610082F61B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		84815550215D68610082F61B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		84815552215D68610082F61B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8481555D215D719B0082F61B /* ChatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewModel.swift; sourceTree = "<group>"; };
+		8481555F215D72380082F61B /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		84815562215D7F8A0082F61B /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
+		84815564215D7FC00082F61B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		84815566215D86B20082F61B /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
+		84815568215D8C890082F61B /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		8481556A215D93F70082F61B /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		8481556C215D947A0082F61B /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
+		8481556E215D9F9C0082F61B /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
+		84815570215DA1400082F61B /* ChatsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatsTableViewCell.swift; path = FirestoreChat/View/ChatsTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		84815572215DA2110082F61B /* UsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewCell.swift; sourceTree = "<group>"; };
+		848157632162B16100DA34D2 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDetailViewController.swift; path = FirestoreChat/View/Controllers/UserDetailViewController.swift; sourceTree = SOURCE_ROOT; };
+		848157652162B42100DA34D2 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		848157672162C51200DA34D2 /* ChatInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatInfoViewController.swift; path = FirestoreChat/View/Controllers/ChatInfoViewController.swift; sourceTree = SOURCE_ROOT; };
+		848157692162C5C800DA34D2 /* ChatInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInfoViewModel.swift; sourceTree = "<group>"; };
+		84853D972161126600520DA8 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		8488A46F216366B90026BDCF /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		848B0BD0215E2332005EF920 /* FireStoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreService.swift; sourceTree = "<group>"; };
+		849A73FF2161B7EC00D57CEF /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
+		849B02B0216267DF00079DF3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		84C70331215E018B0007DE20 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DFC69597383BE27BAD6FFE34 /* Pods_FirestoreChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FirestoreChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F30AE2B509EDB47211CBB4E8 /* Pods-FirestoreChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirestoreChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FirestoreChat/Pods-FirestoreChat.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		84815540215D68600082F61B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98C8729B08EA0D87BA63DA68 /* Pods_FirestoreChat.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		344D3D62671B78C08FA729DF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DFC69597383BE27BAD6FFE34 /* Pods_FirestoreChat.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6F96EC9A0CD47ADE16D786E0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F30AE2B509EDB47211CBB4E8 /* Pods-FirestoreChat.debug.xcconfig */,
+				74BB0920656F93E961701087 /* Pods-FirestoreChat.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		8481553A215D68600082F61B = {
+			isa = PBXGroup;
+			children = (
+				84815545215D68600082F61B /* FirestoreChat */,
+				84815544215D68600082F61B /* Products */,
+				6F96EC9A0CD47ADE16D786E0 /* Pods */,
+				344D3D62671B78C08FA729DF /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		84815544215D68600082F61B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				84815543215D68600082F61B /* FirestoreChat.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		84815545215D68600082F61B /* FirestoreChat */ = {
+			isa = PBXGroup;
+			children = (
+				84815574215DA51E0082F61B /* Services */,
+				84815558215D68720082F61B /* Resources */,
+				8481555A215D68B30082F61B /* ViewModel */,
+				8481555B215D68C40082F61B /* View */,
+				84815561215D72410082F61B /* Model */,
+				84815546215D68600082F61B /* AppDelegate.swift */,
+				84815552215D68610082F61B /* Info.plist */,
+				84C70331215E018B0007DE20 /* GoogleService-Info.plist */,
+			);
+			path = FirestoreChat;
+			sourceTree = "<group>";
+		};
+		84815558215D68720082F61B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8481554D215D68610082F61B /* Assets.xcassets */,
+				8481554F215D68610082F61B /* LaunchScreen.storyboard */,
+				8481554A215D68610082F61B /* Main.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		8481555A215D68B30082F61B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8481555D215D719B0082F61B /* ChatsViewModel.swift */,
+				848157692162C5C800DA34D2 /* ChatInfoViewModel.swift */,
+				8481556A215D93F70082F61B /* ChatViewModel.swift */,
+				849A73FF2161B7EC00D57CEF /* MessageViewModel.swift */,
+				8481556C215D947A0082F61B /* UsersViewModel.swift */,
+				84853D972161126600520DA8 /* ViewModel.swift */,
+				848157652162B42100DA34D2 /* UserViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8481555B215D68C40082F61B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84815570215DA1400082F61B /* ChatsTableViewCell.swift */,
+				84815572215DA2110082F61B /* UsersTableViewCell.swift */,
+				8488A46F216366B90026BDCF /* UIImageView.swift */,
+				8481556E215D9F9C0082F61B /* ChatTableViewCell.swift */,
+				8481555C215D69AF0082F61B /* Controllers */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8481555C215D69AF0082F61B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				848157632162B16100DA34D2 /* UserDetailViewController.swift */,
+				848157672162C51200DA34D2 /* ChatInfoViewController.swift */,
+				84815548215D68600082F61B /* ChatsViewController.swift */,
+				849B02B0216267DF00079DF3 /* ProfileViewController.swift */,
+				84815566215D86B20082F61B /* UsersViewController.swift */,
+				84815568215D8C890082F61B /* ChatViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		84815561215D72410082F61B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8481555F215D72380082F61B /* Chat.swift */,
+				84815562215D7F8A0082F61B /* ChatMessage.swift */,
+				84815564215D7FC00082F61B /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		84815574215DA51E0082F61B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				848B0BD0215E2332005EF920 /* FireStoreService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		84815542215D68600082F61B /* FirestoreChat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84815555215D68610082F61B /* Build configuration list for PBXNativeTarget "FirestoreChat" */;
+			buildPhases = (
+				99E85C046EE7C9A530BC5328 /* [CP] Check Pods Manifest.lock */,
+				8481553F215D68600082F61B /* Sources */,
+				84815540215D68600082F61B /* Frameworks */,
+				84815541215D68600082F61B /* Resources */,
+				768A62851C4D88CB013147F1 /* [CP] Embed Pods Frameworks */,
+				1736FE4206BF0D3DAB1ADB6D /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FirestoreChat;
+			productName = FirestoreChat;
+			productReference = 84815543215D68600082F61B /* FirestoreChat.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8481553B215D68600082F61B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = Admin;
+				TargetAttributes = {
+					84815542215D68600082F61B = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 8481553E215D68600082F61B /* Build configuration list for PBXProject "FirestoreChat" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8481553A215D68600082F61B;
+			productRefGroup = 84815544215D68600082F61B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				84815542215D68600082F61B /* FirestoreChat */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		84815541215D68600082F61B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84815551215D68610082F61B /* LaunchScreen.storyboard in Resources */,
+				84C70332215E018C0007DE20 /* GoogleService-Info.plist in Resources */,
+				8481554E215D68610082F61B /* Assets.xcassets in Resources */,
+				8481554C215D68610082F61B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1736FE4206BF0D3DAB1ADB6D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-FirestoreChat/Pods-FirestoreChat-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseGoogleAuthUI.bundle",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseGoogleAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FirestoreChat/Pods-FirestoreChat-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		768A62851C4D88CB013147F1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-FirestoreChat/Pods-FirestoreChat-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FirestoreChat/Pods-FirestoreChat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		99E85C046EE7C9A530BC5328 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FirestoreChat-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8481553F215D68600082F61B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8481555E215D719B0082F61B /* ChatsViewModel.swift in Sources */,
+				84815571215DA1400082F61B /* ChatsTableViewCell.swift in Sources */,
+				848157642162B16100DA34D2 /* UserDetailViewController.swift in Sources */,
+				84815549215D68600082F61B /* ChatsViewController.swift in Sources */,
+				8481576A2162C5C800DA34D2 /* ChatInfoViewModel.swift in Sources */,
+				84815573215DA2110082F61B /* UsersTableViewCell.swift in Sources */,
+				8488A470216366B90026BDCF /* UIImageView.swift in Sources */,
+				84815569215D8C890082F61B /* ChatViewController.swift in Sources */,
+				848157682162C51200DA34D2 /* ChatInfoViewController.swift in Sources */,
+				84815565215D7FC00082F61B /* User.swift in Sources */,
+				84815567215D86B20082F61B /* UsersViewController.swift in Sources */,
+				849B02B1216267DF00079DF3 /* ProfileViewController.swift in Sources */,
+				848B0BD1215E2332005EF920 /* FireStoreService.swift in Sources */,
+				8481556F215D9F9C0082F61B /* ChatTableViewCell.swift in Sources */,
+				84815547215D68600082F61B /* AppDelegate.swift in Sources */,
+				84853D982161126600520DA8 /* ViewModel.swift in Sources */,
+				848157662162B42100DA34D2 /* UserViewModel.swift in Sources */,
+				84815563215D7F8A0082F61B /* ChatMessage.swift in Sources */,
+				8481556B215D93F70082F61B /* ChatViewModel.swift in Sources */,
+				849A74002161B7EC00D57CEF /* MessageViewModel.swift in Sources */,
+				84815560215D72380082F61B /* Chat.swift in Sources */,
+				8481556D215D947A0082F61B /* UsersViewModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		8481554A215D68610082F61B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8481554B215D68610082F61B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8481554F215D68610082F61B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84815550215D68610082F61B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		84815553215D68610082F61B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		84815554215D68610082F61B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		84815556215D68610082F61B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F30AE2B509EDB47211CBB4E8 /* Pods-FirestoreChat.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = FirestoreChat/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.FirestoreChat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		84815557215D68610082F61B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74BB0920656F93E961701087 /* Pods-FirestoreChat.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = FirestoreChat/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.FirestoreChat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8481553E215D68600082F61B /* Build configuration list for PBXProject "FirestoreChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84815553215D68610082F61B /* Debug */,
+				84815554215D68610082F61B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84815555215D68610082F61B /* Build configuration list for PBXNativeTarget "FirestoreChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84815556215D68610082F61B /* Debug */,
+				84815557215D68610082F61B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8481553B215D68600082F61B /* Project object */;
+}
