@@ -11,16 +11,16 @@ import Foundation
 struct MessageViewModel {
     var userName: String
     var text: String
-    var avatar: String
     var created: String
+    var userId: String
     
-    init(userName: String, text: String, avatar: String, created: Date)
+    init(userName: String, text: String, created: Date, userId: String)
     {
         self.userName = userName
         self.text = text
-        self.avatar = avatar
         let dateFormatter : DateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         self.created = dateFormatter.string(from: created)
+        self.userId = userId
     }
 }

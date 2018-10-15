@@ -9,18 +9,27 @@
 import UIKit
 import Firebase
 
-import FirebaseUI
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    var window: UIWindow?
     
-
-
+    var window: UIWindow?
+    //var appCoordinator: AppCoordinator!
+    var coordinator: MainCoordinator?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
         FirebaseApp.configure()
+        
+        /*window = UIWindow(frame: UIScreen.main.bounds)
+        appCoordinator = AppCoordinator(window: window!)
+        appCoordinator.start()*/
+        let navController = UINavigationController()
+        coordinator = MainCoordinator(navigationController: navController)
+        coordinator?.start()
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = navController
+        window?.makeKeyAndVisible()
         
         return true
     }

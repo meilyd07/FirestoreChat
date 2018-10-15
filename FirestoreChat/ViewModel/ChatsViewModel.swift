@@ -12,27 +12,19 @@ import Foundation
 class ChatsViewModel: ViewModel {
     private(set) var items = [Chat]()
     
-    func fetchData(completion: @escaping () -> Void)
+    func fetchData(completion: @escaping (String?) -> Void)
     {
-        FireStoreService.shared.getChats{ chats in
-            self.items = chats
-            completion()
+        FireStoreService.shared.getChats{ (error, chats) in
+            if error != nil {
+                completion(error)
+            }
+            else {
+                self.items = chats
+                completion(nil)
+            }
         }
     }
     
-    /*func updateData(completion: @escaping () -> Void)
-    {
-        FireStoreService.shared.checkForChatUpdates{ newChats in
-            self.items += newChats
-            completion()
-        }
-    }*/
-    
-    
-    /*func getChatInfoModel() -> ChatInfoViewModel {
-        return ChatInfoViewModel(chatId: viewModel.items[indexPath.row].chatId, description: viewModel.items[indexPath.row].description, logoUrl: viewModel.items[indexPath.row].logoUrl, users: viewModel.items[indexPath.row].users)
-
-    }*/
 }
 
 

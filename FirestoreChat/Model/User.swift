@@ -6,29 +6,15 @@
 //  Copyright © 2018 Admin. All rights reserved.
 //
 
-import Foundation
-/*struct User {
-    private(set) var userId: String
-    private(set) var userName: String
-    private(set) var avatarUrl: String
-    
-    init(userId: String, userName: String, avatarUrl: String)
-    {
-        self.userId = userId
-        self.userName = userName
-        self.avatarUrl = avatarUrl
-    }
-}*/
-
 protocol DocumentSerializable {
     init?(documentId: String, dictionary:[String:Any])
 }
 
 struct User {
-    private(set) var userId: String
-    private(set) var userName: String
-    private(set) var avatarUrl: String
-    private(set) var online: Bool
+    var userId: String
+    var userName: String
+    var avatarUrl: String
+    var online: Bool
     
     var dictionary:[String:Any] {
         return [

@@ -9,10 +9,10 @@
 import Foundation
 class UserViewModel : ViewModel {
     
-    private(set) var userId: String
-    private(set) var userName: String
-    private(set) var avatarUrl: String
-    private(set) var status: String
+    var userId: String
+    var userName: String
+    var avatarUrl: String
+    var status: String
     
     init (userId: String, userName: String, avatarUrl: String, online: Bool) {
         self.userId = userId
@@ -21,7 +21,7 @@ class UserViewModel : ViewModel {
         self.status = online ? "Online" : "Offline"
     }
     
-    func loadAvatar(completionHandler: @escaping ImageDownloadCompletionClosure)
+    func loadAvatar(completionHandler: @escaping (_ imageData: Data ) -> Void)
     {
         super.loadImage(imgString: avatarUrl, completionHandler: completionHandler)
     }

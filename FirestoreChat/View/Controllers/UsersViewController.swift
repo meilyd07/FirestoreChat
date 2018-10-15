@@ -9,52 +9,32 @@
 import UIKit
 
 class UsersViewController: UIViewController {
-
+    weak var coordinator: MainCoordinator?
     var viewModel: UsersViewModel?
     
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if viewModel == nil {
-            viewModel = UsersViewModel()
-            
-            viewModel?.fetchData{
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
+        
+        if let viewModel = viewModel {
+            viewModel.fetchData{ error in
+                
+                if let error = error {
+                    DispatchQueue.main.async {
+                        let ac = UIAlertController(title: "Unable to fetch users", message: error, preferredStyle: .alert)
+                        ac.addAction(UIAlertAction(title: "OK", style: .default))
+                        self.present(ac, animated:  true)
+                    }
+                }
+                else {
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
                 }
             }
         }
-        else {
-            tableView.reloadData()
-        }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-    // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let identifier = segue.identifier {
-            switch identifier {
-            case "Show user details":
-                if let cell = sender as? UsersTableViewCell,
-                    let indexPath = tableView.indexPath(for: cell),
-                    let destinationVC = segue.destination as? UserDetailViewController,
-                    let viewModel = viewModel
-                {
-                    destinationVC.viewModel = viewModel.items[indexPath.row]
-                }
-            default: break
-            }
-        }
-    }
-    
-
 }
 
 extension UsersViewController: UITableViewDataSource, UITableViewDelegate {
@@ -67,21 +47,26 @@ extension UsersViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "User item cell", for: indexPath)
         
-        if let userCell = cell as? UsersTableViewCell {
-            if let viewModel = viewModel {
-                userCell.userName.text = viewModel.items[indexPath.row].userName
-                
-                let imageCompletionClosure = { ( imageData: Data ) -> Void in
-                    DispatchQueue.main.async {
-                        userCell.userImage.image = UIImage(data: imageData as Data)
-                    }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UserItemCell", for: indexPath)
+        
+        if let viewModel = viewModel {
+            cell.textLabel?.text = viewModel.items[indexPath.row].userName
+            viewModel.loadImage(imgString:viewModel.items[indexPath.row].avatarUrl){ [weak cell]
+                imageData in
+                DispatchQueue.main.async {
+                    cell?.imageView?.image = UIImage(data: imageData as Data)
+                    cell?.imageView?.roundedImage()
                 }
-                viewModel.loadImage(imgString:viewModel.items[indexPath.row].avatarUrl, completionHandler: imageCompletionClosure)
             }
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        if let viewModel = viewModel {
+            coordinator?.showUserDetail(viewModel: viewModel.items[indexPath.row])
+        }
     }
 }

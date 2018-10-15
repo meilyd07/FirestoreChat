@@ -10,6 +10,7 @@ import UIKit
 
 class UserDetailViewController: UIViewController {
     var viewModel: UserViewModel?
+    weak var coordinator: MainCoordinator?
     
     @IBOutlet weak var avatarImage: UIImageView!
     
@@ -21,35 +22,12 @@ class UserDetailViewController: UIViewController {
         userName.text = viewModel?.userName
         userStatus.text = viewModel?.status
         
-        let imageCompletionClosure = { ( imageData: Data ) -> Void in
+        viewModel?.loadAvatar{ [weak self]
+            ( imageData: Data ) -> Void in
             DispatchQueue.main.async {
-                self.avatarImage.image = UIImage(data: imageData as Data)
-                
-                /*self.avatarImage.layer.cornerRadius = 30
-                self.avatarImage.contentMode = .scaleAspectFill
-                self.avatarImage.layer.masksToBounds = true*/
-                self.avatarImage.roundedImage()
+                self?.avatarImage.image = UIImage(data: imageData as Data)
+                self?.avatarImage.roundedImage()
             }
         }
-        
-        viewModel?.loadAvatar(completionHandler: imageCompletionClosure)
-        // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

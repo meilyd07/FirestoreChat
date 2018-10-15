@@ -23,22 +23,48 @@ class ChatViewModel: ViewModel {
         return self.chatDescription
     }
     
-    func fetchData(completion: @escaping () -> Void)
+    func getAvatar(userId: String)->String
     {
-        FireStoreService.shared.getMessages(chatId: self.chatId){ messages in
-            self.items = messages.flatMap{MessageViewModel(userName: $0.user.userName, text: $0.text, avatar: $0.user.avatarUrl, created: $0.created)}
-            completion()
+        return FireStoreService.shared.getAvatarUrl(userId: userId)
+    }
+    
+    
+    func fetchData(completion: @escaping (String?) -> Void)
+    {
+        FireStoreService.shared.getMessages(chatId: self.chatId){ (error, messages)   in
+            if error != nil {
+                completion(error)
+            } else {
+                self.items = messages.flatMap{MessageViewModel(userName: $0.userName, text: $0.text, created: $0.created, userId: $0.userId)}
+                completion(nil)
+            }
         }
     }
 
-    func addItem(messageText: String) {
-        FireStoreService.shared.addMessage(text: messageText, chatId: chatId)
+    
+    func addItem(messageText: String, completion: @escaping (String?) -> Void) {
+        FireStoreService.shared.addMessage(text: messageText, chatId: chatId) {
+            error in
+            if error != nil {
+                completion(error)
+            }
+            else {
+                completion(nil)
+            }
+        }
     }
 
-    func checkForUpdates (completion: @escaping () -> Void) {
-        FireStoreService.shared.checkForChatUpdates(chatId: chatId) { message in
-            self.items.append(MessageViewModel(userName: message.user.userName, text: message.text, avatar: message.user.avatarUrl, created: message.created))
-            completion()
+    func checkForUpdates (completion: @escaping (String?) -> Void) {
+        FireStoreService.shared.checkForChatUpdates(chatId: chatId) { (error, messages) in
+            if error != nil {
+                completion(error)
+            }
+            else {
+                for message in messages {
+                    self.items.append(MessageViewModel(userName: message.userName, text: message.text, created: message.created, userId: message.userId))
+                }
+                completion(nil)
+            }
         }
     }
     

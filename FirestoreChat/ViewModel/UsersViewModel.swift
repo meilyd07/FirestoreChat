@@ -11,20 +11,26 @@ import Foundation
 class UsersViewModel: ViewModel {
     private(set) var items = [UserViewModel]()
     
-    func fetchData(completion: @escaping () -> Void)
+    func fetchData(completion: @escaping (String?) -> Void)
     {
-        FireStoreService.shared.getUsers{ users in
-            self.items = users.flatMap{UserViewModel(userId: $0.userId, userName: $0.userName, avatarUrl: $0.avatarUrl, online: $0.online)}
-            completion()
+        FireStoreService.shared.getUsers{ (error, users) in
+            if error != nil {
+                completion(error)
+            }
+            else{
+                self.items = users.flatMap{UserViewModel(userId: $0.userId, userName: $0.userName, avatarUrl: $0.avatarUrl, online: $0.online)}
+                completion(nil)
+            }
         }
     }
     
-    init(users: [User]) {
-        self.items = users.flatMap{UserViewModel(userId: $0.userId, userName: $0.userName, avatarUrl: $0.avatarUrl, online: $0.online)}
-    }
+    /*init(items: [UserViewModel])
+    {
+        self.items = items
+    }*/
     
-    override init() {
+    /*override init() {
         super.init()
-    }
+    }*/
     
 }

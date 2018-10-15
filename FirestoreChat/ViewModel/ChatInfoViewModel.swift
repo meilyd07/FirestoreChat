@@ -12,22 +12,30 @@ class ChatInfoViewModel : ViewModel {
     private(set) var chatId: String
     private(set) var description: String
     private(set) var logoUrl: String
-    private(set) var users: [User]
+    private(set) var items: [UserViewModel]
     
-    init (chatId: String, description: String, logoUrl: String, users: [User]) {
+    init (chatId: String, description: String, logoUrl: String) {
         self.chatId = chatId
         self.description = description
         self.logoUrl = logoUrl
-        self.users = users
+        self.items = []
     }
     
-    func loadLogo(completionHandler: @escaping ImageDownloadCompletionClosure)
+    func loadLogo(completionHandler: @escaping (_ imageData: Data ) -> Void)
     {
         super.loadImage(imgString: logoUrl, completionHandler: completionHandler)
     }
     
-    func getUsersViewModel() -> UsersViewModel{
-        return UsersViewModel(users: self.users)
-    }
     
+    func fetchData(completion: @escaping (String?) -> Void)
+    {
+        FireStoreService.shared.getChatUsers(chatId: self.chatId) { (error, chatUsers) in
+            if error != nil {
+                completion(error)
+            } else {
+                self.items = chatUsers.flatMap{UserViewModel(userId: $0.userId, userName: $0.userName, avatarUrl: $0.avatarUrl, online: $0.online)}
+                completion(nil)
+            }
+        }
+    }
 }

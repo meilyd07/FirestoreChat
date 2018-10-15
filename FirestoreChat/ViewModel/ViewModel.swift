@@ -8,11 +8,12 @@
 
 import Foundation
 
-public typealias ImageDownloadCompletionClosure = (_ imageData: Data ) -> Void
+//public typealias ImageDownloadCompletionClosure = (_ imageData: Data ) -> Void
 
 class ViewModel {
     
-    func loadImage(imgString: String, completionHandler: @escaping ImageDownloadCompletionClosure) {
+    
+    func loadImage(imgString: String, completionHandler: @escaping (_ imageData: Data ) -> Void) {
         if let imageUrl = URL(string: imgString) {
             URLSession.shared.dataTask(with: imageUrl) { data, urlResponse, error in
                 guard let data = data, error == nil, urlResponse != nil else {
@@ -25,10 +26,16 @@ class ViewModel {
     }
     
     func getDefaultProfileId() -> String{
-        return UserDefaults.standard.string(forKey: "defaultUser") ?? "b91K10j8XLw4CYCCbkGE"
+        if let userDefault = UserDefaults.standard.dictionary(forKey: "defaultUser"), let userId = userDefault["userId"] as? String {
+            return userId
+        }
+        else {
+            return ""
+        }
     }
     
-    func setDefaultProfileId(userId: String) {
-        UserDefaults.standard.set(userId, forKey: "defaultUser")
+    func setDefaultProfileId(userId: String, name: String) {
+        let dict = ["name": name, "userId": userId]
+        UserDefaults.standard.setValue(dict, forKeyPath: "defaultUser")
     }
 }
