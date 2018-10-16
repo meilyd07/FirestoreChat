@@ -11,15 +11,20 @@ import Firebase
 
 
 class FireStoreService {
+    //MARK: - static properties
     static let shared = FireStoreService()
+    
+    //MARK: - internal properties
     var usersArray = [User]()
     
+    //MARK: - initializers
     init() {
         let settings = FirestoreSettings()
         Firestore.firestore().settings = settings
     }
     
-    public func getUsers(finished: @escaping (String?, [User]) -> Void){
+    //MARK: - internal methods
+    func getUsers(finished: @escaping (String?, [User]) -> Void){
         if usersArray.count == 0 {
             Firestore.firestore().collection("users").getDocuments() {[weak self] (querySnapshot, err) in
                 if let err = err {
@@ -64,7 +69,7 @@ class FireStoreService {
         }
     }
     
-    public func getMessages(chatId:String, finished: @escaping (String?, [ChatMessage]) -> Void)
+    func getMessages(chatId:String, finished: @escaping (String?, [ChatMessage]) -> Void)
     {
         Firestore.firestore().collection("chats").document(chatId).collection("messages")
             .order(by: "created", descending: false)
@@ -169,5 +174,3 @@ class FireStoreService {
         }
     }
 }
-    
-

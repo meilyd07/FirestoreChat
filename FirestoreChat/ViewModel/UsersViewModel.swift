@@ -9,8 +9,10 @@
 import Foundation
 
 class UsersViewModel: ViewModel {
+    //MARK: - private properties
     private(set) var items = [UserViewModel]()
     
+    //MARK: - internal methods
     func fetchData(completion: @escaping (String?) -> Void)
     {
         FireStoreService.shared.getUsers{ (error, users) in
@@ -23,14 +25,4 @@ class UsersViewModel: ViewModel {
             }
         }
     }
-    
-    /*init(items: [UserViewModel])
-    {
-        self.items = items
-    }*/
-    
-    /*override init() {
-        super.init()
-    }*/
-    
 }

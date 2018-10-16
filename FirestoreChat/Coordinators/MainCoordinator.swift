@@ -6,17 +6,20 @@
 //  Copyright © 2018 Admin. All rights reserved.
 //
 
-import Foundation
+//import Foundation
 import UIKit
 
 class MainCoordinator: Coordinator {
     
+    //MARK: - internal properties
     var navigationController: UINavigationController
     
+    //MARK: - initializer
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
+    //MARK: - internal methods
     func start() {
         //verify if userSettings exists
         if UserDefaults.standard.dictionary(forKey: "defaultUser") == nil {
@@ -26,26 +29,40 @@ class MainCoordinator: Coordinator {
         
         //start tab bar controller
         showTabBar()
-        
     }
     
     func showTabBar() {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         //get users tab
-        let usersViewController = storyboard.instantiateViewController(withIdentifier: "UsersViewController") as! UsersViewController
+        
+        guard let usersViewController = storyboard.instantiateViewController(withIdentifier: "UsersViewController") as? UsersViewController
+            else {
+                print("Error instantiate UsersViewController.")
+                return
+        }
+        
         let usersViewModel = UsersViewModel()
         usersViewController.viewModel = usersViewModel
         usersViewController.coordinator = self
         usersViewController.tabBarItem = UITabBarItem(title: "Users", image: UIImage(named: "users"), selectedImage: nil)
         
         //get chats
-        let chatsViewController = storyboard.instantiateViewController(withIdentifier: "ChatsViewController") as! ChatsViewController
+        guard let chatsViewController = storyboard.instantiateViewController(withIdentifier: "ChatsViewController") as? ChatsViewController
+            else {
+                print("Error instantiate ChatsViewController.")
+                return
+        }
+        
         chatsViewController.viewModel = ChatsViewModel()
         chatsViewController.coordinator = self
         chatsViewController.tabBarItem = UITabBarItem(title: "Chats", image: UIImage(named: "chats"), selectedImage: nil)
         
         //get profile
-        let profileViewController = storyboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+        guard let profileViewController = storyboard.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController else {
+            print("Error instantiate ProfileViewController.")
+            return
+        }
+        
         profileViewController.viewModel = usersViewModel
         profileViewController.coordinator = self
         profileViewController.tabBarItem.title = "Profile"
@@ -57,11 +74,12 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(tabBarController, animated: false)
     }
     
-    //////
-    
     func showUsers(viewModel: UsersViewModel) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let vc = storyboard.instantiateViewController(withIdentifier: "UsersViewController") as! UsersViewController
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "UsersViewController") as? UsersViewController else {
+            print("Error instantiate UsersViewController.")
+            return
+        }
         vc.viewModel = viewModel
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: false)
@@ -69,7 +87,10 @@ class MainCoordinator: Coordinator {
     
     func showUserDetail(viewModel: UserViewModel) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let vc = storyboard.instantiateViewController(withIdentifier: "UserDetailViewController") as! UserDetailViewController
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "UserDetailViewController") as? UserDetailViewController else {
+            print("Error instantiate UserDetailViewController.")
+            return
+        }
         vc.coordinator = self
         vc.viewModel = viewModel
         navigationController.pushViewController(vc, animated: true)
@@ -77,7 +98,10 @@ class MainCoordinator: Coordinator {
     
     func showChats(viewModel: ChatsViewModel) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let vc = storyboard.instantiateViewController(withIdentifier: "ChatsViewController") as! ChatsViewController
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "ChatsViewController") as? ChatsViewController else {
+            print("Error instantiate ChatsViewController.")
+            return
+        }
         vc.coordinator = self
         vc.viewModel = viewModel
         navigationController.pushViewController(vc, animated: true)
@@ -85,7 +109,10 @@ class MainCoordinator: Coordinator {
     
     func showChat(viewModel: ChatViewModel, controller: UIViewController) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let vc = storyboard.instantiateViewController(withIdentifier: "MessagesViewController") as! MessagesViewController
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "MessagesViewController") as? MessagesViewController else {
+            print("Error instantiate MessagesViewController.")
+            return
+        }
         vc.coordinator = self
         vc.viewModel = viewModel
         controller.present(vc, animated: true)
@@ -97,7 +124,10 @@ class MainCoordinator: Coordinator {
     
     func showChatInfo(viewModel: ChatInfoViewModel) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let vc = storyboard.instantiateViewController(withIdentifier: "ChatInfoViewController") as! ChatInfoViewController
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "ChatInfoViewController") as? ChatInfoViewController else {
+            print("Error instantiate ChatInfoViewController.")
+            return
+        }
         vc.coordinator = self
         vc.viewModel = viewModel
         navigationController.pushViewController(vc, animated: true)
@@ -105,9 +135,20 @@ class MainCoordinator: Coordinator {
     
     func showProfile(viewModel: UsersViewModel) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let vc = storyboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController else {
+            print("Error instantiate ProfileViewController.")
+            return
+        }
         vc.coordinator = self
         vc.viewModel = viewModel
         navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func showAlert(title: String, message: String, controller: UIViewController) {
+        DispatchQueue.main.async {
+            let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            controller.present(ac, animated:  true)
+        }
     }
 }

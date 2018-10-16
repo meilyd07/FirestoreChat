@@ -9,21 +9,20 @@
 import UIKit
 import Firebase
 
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    var window: UIWindow?
-    //var appCoordinator: AppCoordinator!
-    var coordinator: MainCoordinator?
+    //MARK: - private properties
+    private var coordinator: MainCoordinator?
     
+    //MARK: - internal properties
+    var window: UIWindow?
+    
+    //MARK: - internal methods
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
-        
-        /*window = UIWindow(frame: UIScreen.main.bounds)
-        appCoordinator = AppCoordinator(window: window!)
-        appCoordinator.start()*/
+
         let navController = UINavigationController()
         coordinator = MainCoordinator(navigationController: navController)
         coordinator?.start()

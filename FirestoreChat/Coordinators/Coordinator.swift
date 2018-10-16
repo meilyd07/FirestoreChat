@@ -8,7 +8,9 @@
 import UIKit
 
 protocol Coordinator {
+    //MARK: - internal properties
     var navigationController: UINavigationController { get set }
     
+    //MARK: - internal methods
     func start()
 }

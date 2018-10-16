@@ -9,11 +9,13 @@
 import Foundation
 class ChatInfoViewModel : ViewModel {
     
+    //MARK: - private properties
     private(set) var chatId: String
     private(set) var description: String
     private(set) var logoUrl: String
     private(set) var items: [UserViewModel]
     
+    //MARK: - initializer
     init (chatId: String, description: String, logoUrl: String) {
         self.chatId = chatId
         self.description = description
@@ -21,11 +23,12 @@ class ChatInfoViewModel : ViewModel {
         self.items = []
     }
     
+    //MARK: - internal methods
+    
     func loadLogo(completionHandler: @escaping (_ imageData: Data ) -> Void)
     {
         super.loadImage(imgString: logoUrl, completionHandler: completionHandler)
     }
-    
     
     func fetchData(completion: @escaping (String?) -> Void)
     {

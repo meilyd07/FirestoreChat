@@ -9,21 +9,21 @@
 import UIKit
 
 class ChatsViewController: UIViewController {
+    
+    //MARK: - internal properties
     var viewModel: ChatsViewModel?
     weak var coordinator: MainCoordinator?
     
+    //MARK: - outlets
     @IBOutlet weak var tableView: UITableView!
     
+    //MARK: - internal methods
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Chats"
         viewModel?.fetchData{ error in
             if let error = error {
-                DispatchQueue.main.async {
-                    let ac = UIAlertController(title: "Unable to fetch chats", message: error, preferredStyle: .alert)
-                    ac.addAction(UIAlertAction(title: "OK", style: .default))
-                    self.present(ac, animated:  true)
-                }
+                self.coordinator?.showAlert(title: "Unable to fetch chats", message: error, controller: self)
             }
             else {
                 
@@ -33,38 +33,12 @@ class ChatsViewController: UIViewController {
             }
         }
     }
-
-    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let identifier = segue.identifier {
-            switch identifier {
-            case "showChat":
-                if let indexPath = sender as? IndexPath,
-                    let seguedToVC =
-                    (segue.destination as? UINavigationController)
-                {
-                    if let destinationVC = seguedToVC.visibleViewController as? MessagesViewController {
-                        if let viewModel = viewModel {
-                        destinationVC.viewModel = ChatViewModel(chatId: viewModel.items[indexPath.row].chatId, chatDescription: viewModel.items[indexPath.row].description)
-                        }
-                    }
-                }
-            case "showChatInfo":
-                if let indexPath = sender as? IndexPath,
-                    let seguedToVC =
-                    (segue.destination as? ChatInfoViewController)
-                {
-                    if let viewModel = viewModel {
-                    seguedToVC.viewModel = ChatInfoViewModel(chatId: viewModel.items[indexPath.row].chatId, description: viewModel.items[indexPath.row].description, logoUrl: viewModel.items[indexPath.row].logoUrl)
-                    }
-                }
-            default: break
-            }
-        }
-    }
-*/
 }
 
+//MARK: - extension UITableViewDataSource, UITableViewDelegate
 extension ChatsViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    //MARK: - internal methods
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -86,7 +60,8 @@ extension ChatsViewController: UITableViewDataSource, UITableViewDelegate {
             viewModel.loadImage(imgString:viewModel.items[indexPath.row].logoUrl){ [weak cell]
                 ( imageData: Data ) -> Void in
                 DispatchQueue.main.async {
-                    cell?.imageView?.image = UIImage(data: imageData as Data)
+                    let img = UIImage(data: imageData as Data)
+                    cell?.imageView?.image = img?.scaleToSize(targetSize: CGSize(width: 30, height: 30))
                     cell?.imageView?.roundedImage()
                 }
             }
@@ -110,4 +85,3 @@ extension ChatsViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
 }
-

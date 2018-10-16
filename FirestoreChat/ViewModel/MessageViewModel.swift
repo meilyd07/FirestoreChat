@@ -9,11 +9,14 @@
 import Foundation
 
 struct MessageViewModel {
+    
+    //MARK: - private properties
     var userName: String
     var text: String
     var created: String
     var userId: String
     
+    //MARK: - initializer
     init(userName: String, text: String, created: Date, userId: String)
     {
         self.userName = userName

@@ -9,21 +9,24 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
+    
+    //MARK: - private properties
+    private var indexPathOfDefaultUser: IndexPath?
+    
+    //MARK: - internal properties
     weak var coordinator: MainCoordinator?
     var viewModel: UsersViewModel?
-    var indexPathOfDefaultUser: IndexPath?
     
+    //MARK: - outlets
     @IBOutlet weak var tableView: UITableView!
+    
+    //MARK: - internal methods
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel?.fetchData{ error in
             
             if let error = error {
-                DispatchQueue.main.async {
-                    let ac = UIAlertController(title: "Unable to fetch users", message: error, preferredStyle: .alert)
-                    ac.addAction(UIAlertAction(title: "OK", style: .default))
-                    self.present(ac, animated:  true)
-                }
+                self.coordinator?.showAlert(title: "Unable to fetch users", message: error, controller: self)
             }
             else {
                 DispatchQueue.main.async {
@@ -34,7 +37,10 @@ class ProfileViewController: UIViewController {
     }
 }
 
+//MARK: - extensions
 extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    //MARK: - internal methods
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

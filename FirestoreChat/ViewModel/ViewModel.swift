@@ -8,16 +8,14 @@
 
 import Foundation
 
-//public typealias ImageDownloadCompletionClosure = (_ imageData: Data ) -> Void
-
 class ViewModel {
     
-    
+    //MARK: - internal methods
     func loadImage(imgString: String, completionHandler: @escaping (_ imageData: Data ) -> Void) {
         if let imageUrl = URL(string: imgString) {
             URLSession.shared.dataTask(with: imageUrl) { data, urlResponse, error in
                 guard let data = data, error == nil, urlResponse != nil else {
-                    print("Error downloading avatar. Error description: \(String(describing: error?.localizedDescription))")
+                    print("Error downloading image. Error description: \(String(describing: error?.localizedDescription))")
                     return
                 }
                 completionHandler(data)

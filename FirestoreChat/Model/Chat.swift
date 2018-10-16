@@ -7,11 +7,12 @@
 //
 
 struct Chat {
+    
+    //MARK: - private properties
     private(set) var chatId: String
     private(set) var description: String
     private(set) var logoUrl: String
-    
-    var dictionary:[String:Any] {
+    private var dictionary:[String:Any] {
         return [
             "description": description,
             "logoUrl": logoUrl
@@ -19,8 +20,10 @@ struct Chat {
     }
 }
 
+//MARK: - extension
 extension Chat: DocumentSerializable {
     
+    //MARK: - initializer
     init?(documentId: String, dictionary: [String : Any]) {
         guard let description = dictionary["description"] as? String,
             let logoUrl = dictionary["logoUrl"] as? String

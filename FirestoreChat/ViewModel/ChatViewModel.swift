@@ -8,10 +8,13 @@
 
 import Foundation
 class ChatViewModel: ViewModel {
+    
+    //MARK: - private properties
     private var chatId: String
     private var chatDescription: String
     private(set) var items: [MessageViewModel]
     
+    //MARK: - initializer
     init(chatId: String, chatDescription: String)
     {
         self.chatDescription = chatDescription
@@ -19,6 +22,7 @@ class ChatViewModel: ViewModel {
         self.items = []
     }
     
+    //MARK: - internal methods
     func getChatDescription() -> String{
         return self.chatDescription
     }
@@ -43,27 +47,32 @@ class ChatViewModel: ViewModel {
 
     
     func addItem(messageText: String, completion: @escaping (String?) -> Void) {
-        FireStoreService.shared.addMessage(text: messageText, chatId: chatId) {
-            error in
-            if error != nil {
-                completion(error)
+        if messageText != "" {
+            FireStoreService.shared.addMessage(text: messageText, chatId: chatId) {
+                error in
+                if error != nil {
+                    completion(error)
+                }
+                else {
+                    completion(nil)
+                }
             }
-            else {
-                completion(nil)
-            }
+            
+        } else {
+            completion(nil)
         }
     }
 
-    func checkForUpdates (completion: @escaping (String?) -> Void) {
+    func checkForUpdates (completion: @escaping (String?, Bool) -> Void) {
         FireStoreService.shared.checkForChatUpdates(chatId: chatId) { (error, messages) in
             if error != nil {
-                completion(error)
+                completion(error, false)
             }
             else {
                 for message in messages {
                     self.items.append(MessageViewModel(userName: message.userName, text: message.text, created: message.created, userId: message.userId))
                 }
-                completion(nil)
+                completion(nil, messages.count > 0)
             }
         }
     }

@@ -9,13 +9,17 @@
 import UIKit
 
 class ChatInfoViewController: UIViewController {
+    
+    //MARK: - internal properties
     weak var coordinator: MainCoordinator?
     var viewModel: ChatInfoViewModel?
     
+    //MARK: - outlets
     @IBOutlet weak var logoUrl: UIImageView!
     @IBOutlet weak var chatDescription: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    //MARK: - internal methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,11 +35,7 @@ class ChatInfoViewController: UIViewController {
         
         viewModel?.fetchData{ error in
             if let error = error {
-                DispatchQueue.main.async {
-                    let ac = UIAlertController(title: "Unable to fetch chat users", message: error, preferredStyle: .alert)
-                    ac.addAction(UIAlertAction(title: "OK", style: .default))
-                    self.present(ac, animated:  true)
-                }
+                self.coordinator?.showAlert(title: "Unable to fetch chat updates", message: error, controller: self)
             }
             else {
                 DispatchQueue.main.async {
@@ -46,7 +46,12 @@ class ChatInfoViewController: UIViewController {
     }
 }
 
+//MARK: - extension UITableViewDataSource, UITableViewDelegate
+
 extension ChatInfoViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    //MARK: - internal methods
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

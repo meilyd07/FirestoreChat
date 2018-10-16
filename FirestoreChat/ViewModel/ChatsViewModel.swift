@@ -8,10 +8,12 @@
 
 import Foundation
 
-
 class ChatsViewModel: ViewModel {
+    
+    //MARK: - private properties
     private(set) var items = [Chat]()
     
+    //MARK: - internal methods
     func fetchData(completion: @escaping (String?) -> Void)
     {
         FireStoreService.shared.getChats{ (error, chats) in

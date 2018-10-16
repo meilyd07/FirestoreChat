@@ -11,12 +11,13 @@ protocol DocumentSerializable {
 }
 
 struct User {
-    var userId: String
-    var userName: String
-    var avatarUrl: String
-    var online: Bool
     
-    var dictionary:[String:Any] {
+    //MARK: - private properties
+    private(set) var userId: String
+    private(set) var userName: String
+    private(set) var avatarUrl: String
+    private(set) var online: Bool
+    private var dictionary:[String:Any] {
         return [
             "name": userName,
             "avatarUrl" : avatarUrl,
@@ -25,7 +26,10 @@ struct User {
     }
 }
 
+//MARK: - extension
 extension User: DocumentSerializable {
+    
+    //MARK: - initializer
     init?(documentId: String, dictionary: [String: Any]) {
         guard let userName = dictionary["name"] as? String,
             let avatarUrl = dictionary["avatarUrl"] as? String,

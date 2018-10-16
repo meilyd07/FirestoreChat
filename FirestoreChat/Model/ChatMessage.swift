@@ -8,14 +8,14 @@
 import Foundation
 
 struct ChatMessage {
+    
+    //MARK: - private properties
     private(set) var documentId: String
     private(set) var text: String
     private(set) var created: Date
     private(set) var userName: String
     private(set) var userId: String
-    
-    
-    var dictionary:[String:Any] {
+    private var dictionary:[String:Any] {
         return [
             "name": userName,
             "userId": userId,
@@ -25,8 +25,10 @@ struct ChatMessage {
     }
 }
 
+//MARK: - extensions
 extension ChatMessage: DocumentSerializable {
     
+    //MARK: - initializer
     init?(documentId: String, dictionary: [String : Any]) {
         guard let userName = dictionary["name"] as? String,
         let userId = dictionary["userId"] as? String,

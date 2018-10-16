@@ -9,14 +9,18 @@
 import UIKit
 
 class UserDetailViewController: UIViewController {
+    
+    //MARK: - internal properties
+    
     var viewModel: UserViewModel?
     weak var coordinator: MainCoordinator?
     
+    //MARK: - outlets
     @IBOutlet weak var avatarImage: UIImageView!
-    
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userStatus: UILabel!
     
+    //MARK: - internal methods
     override func viewDidLoad() {
         super.viewDidLoad()
         userName.text = viewModel?.userName
