@@ -62,6 +62,10 @@ class ChatViewModel: ViewModel {
             completion(nil)
         }
     }
+    
+    func closeChat() {
+        Router.shared.closeChat()
+    }
 
     func checkForUpdates (completion: @escaping (String?, Bool) -> Void) {
         FireStoreService.shared.checkForChatUpdates(chatId: chatId) { (error, messages) in

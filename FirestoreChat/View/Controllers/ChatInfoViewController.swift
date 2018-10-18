@@ -11,7 +11,6 @@ import UIKit
 class ChatInfoViewController: UIViewController {
     
     //MARK: - internal properties
-    weak var coordinator: MainCoordinator?
     var viewModel: ChatInfoViewModel?
     
     //MARK: - outlets
@@ -35,7 +34,7 @@ class ChatInfoViewController: UIViewController {
         
         viewModel?.fetchData{ error in
             if let error = error {
-                self.coordinator?.showAlert(title: "Unable to fetch chat updates", message: error, controller: self)
+                self.viewModel?.showAlert(title: "Unable to fetch chat updates", message: error)
             }
             else {
                 DispatchQueue.main.async {
@@ -79,8 +78,7 @@ extension ChatInfoViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        if let viewModel = viewModel {
-            coordinator?.showUserDetail(viewModel: viewModel.items[indexPath.row])
-        }
+        
+       viewModel?.showUserDetail(index: indexPath.row)
     }
 }

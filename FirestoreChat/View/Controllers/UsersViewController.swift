@@ -11,7 +11,6 @@ import UIKit
 class UsersViewController: UIViewController {
     
     //MARK: - internal properties
-    weak var coordinator: MainCoordinator?
     var viewModel: UsersViewModel?
     
     //MARK: - outlets
@@ -25,7 +24,7 @@ class UsersViewController: UIViewController {
             viewModel.fetchData{ error in
                 
                 if let error = error {
-                    self.coordinator?.showAlert(title: "Unable to fetch users", message: error, controller: self)
+                    Router.shared.showAlert(title: "Unable to fetch users", message: error)
                 }
                 else {
                     DispatchQueue.main.async {
@@ -69,7 +68,7 @@ extension UsersViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         if let viewModel = viewModel {
-            coordinator?.showUserDetail(viewModel: viewModel.items[indexPath.row])
+            Router.shared.showUserDetail(viewModel: viewModel.items[indexPath.row])
         }
     }
 }

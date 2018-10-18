@@ -14,7 +14,6 @@ class ProfileViewController: UIViewController {
     private var indexPathOfDefaultUser: IndexPath?
     
     //MARK: - internal properties
-    weak var coordinator: MainCoordinator?
     var viewModel: UsersViewModel?
     
     //MARK: - outlets
@@ -26,7 +25,7 @@ class ProfileViewController: UIViewController {
         viewModel?.fetchData{ error in
             
             if let error = error {
-                self.coordinator?.showAlert(title: "Unable to fetch users", message: error, controller: self)
+                self.viewModel?.showAlert(title: "Unable to fetch users", message: error)
             }
             else {
                 DispatchQueue.main.async {
@@ -80,7 +79,8 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             viewModel.loadImage(imgString:viewModel.items[indexPath.row].avatarUrl){ [weak cell]
                 imageData in
                 DispatchQueue.main.async {
-                    cell?.imageView?.image = UIImage(data: imageData as Data)
+                    let img = UIImage(data: imageData as Data)
+                    cell?.imageView?.image = img?.scaleToSize(targetSize: CGSize(width: 43, height: 43))
                     cell?.imageView?.roundedImage()
                 }
             }

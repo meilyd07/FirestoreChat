@@ -27,6 +27,18 @@ class ChatsViewModel: ViewModel {
         }
     }
     
+    func showChat(index: Int)
+    {
+        let chatViewModel = ChatViewModel(chatId: self.items[index].chatId, chatDescription: self.items[index].description)
+        Router.shared.showChat(viewModel: chatViewModel)
+    }
+    
+    func showChatInfo(index: Int)
+    {
+        let chatInfoViewModel = ChatInfoViewModel(chatId: self.items[index].chatId, description: self.items[index].description, logoUrl: self.items[index].logoUrl)
+        Router.shared.showChatInfo(viewModel: chatInfoViewModel)
+    }
+    
 }
 
 

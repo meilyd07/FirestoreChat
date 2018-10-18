@@ -18,11 +18,15 @@ extension UIImage {
         let newSize = widthRatio > heightRatio ?  CGSize(width: size.width * heightRatio, height: size.height * heightRatio) : CGSize(width: size.width * widthRatio,  height: size.height * widthRatio)
         let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
         
-        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
-        self.draw(in: rect)
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
+        let renderFormat = UIGraphicsImageRendererFormat.default()
+        renderFormat.opaque = false
         
+        let renderer = UIGraphicsImageRenderer(size: newSize, format: renderFormat)
+        let newImage = renderer.image {
+            (context) in
+            self.draw(in: rect)
+        }
         return newImage
     }
 }
+

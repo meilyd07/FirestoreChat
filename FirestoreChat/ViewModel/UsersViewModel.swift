@@ -25,4 +25,8 @@ class UsersViewModel: ViewModel {
             }
         }
     }
+    
+    func showUserDetail(index: Int) {
+        Router.shared.showUserDetail(viewModel: self.items[index])
+    }
 }

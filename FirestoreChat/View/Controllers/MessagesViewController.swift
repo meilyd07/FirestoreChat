@@ -11,7 +11,6 @@ import UIKit
 class MessagesViewController: UIViewController  {
     
     //MARK: - internal properties
-    weak var coordinator: MainCoordinator?
     var viewModel: ChatViewModel?
     
     //MARK: - outlets
@@ -27,7 +26,7 @@ class MessagesViewController: UIViewController  {
     
     //MARK: - internal methods
     @IBAction func close(_ sender: UIBarButtonItem) {
-        coordinator?.closeChat(controller: self)
+        viewModel?.closeChat()
     }
     
     @IBAction func sendMessage(_ sender: UIButton) {
@@ -35,7 +34,7 @@ class MessagesViewController: UIViewController  {
         if let messageText = messageTextField.text {
             viewModel?.addItem(messageText: messageText){ error in
                 if let error = error {
-                    self.coordinator?.showAlert(title: "Unable to add message to chat", message: error, controller: self)
+                    Router.shared.showAlert(title: "Unable to add message to chat", message: error)
                 }
             }
             messageTextField.text = nil
@@ -69,7 +68,7 @@ class MessagesViewController: UIViewController  {
                                                object: nil)
         viewModel?.fetchData{ error in
             if let error = error {
-                self.coordinator?.showAlert(title: "Unable to fetch messages", message: error, controller: self)
+                Router.shared.showAlert(title: "Unable to fetch messages", message: error)
             }
             else {
                 DispatchQueue.main.async {
@@ -79,7 +78,7 @@ class MessagesViewController: UIViewController  {
         }
         viewModel?.checkForUpdates { error, messagesAdded in
             if let error = error {
-                self.coordinator?.showAlert(title: "Unable to fetch chat updates", message: error, controller: self)
+                Router.shared.showAlert(title: "Unable to fetch chat updates", message: error)
             }
             else {
                 if messagesAdded {

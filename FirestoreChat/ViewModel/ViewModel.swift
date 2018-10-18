@@ -36,4 +36,8 @@ class ViewModel {
         let dict = ["name": name, "userId": userId]
         UserDefaults.standard.setValue(dict, forKeyPath: "defaultUser")
     }
+    
+    func showAlert(title: String, message: String){
+        Router.shared.showAlert(title: title, message: message)
+    }
 }

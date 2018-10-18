@@ -13,7 +13,6 @@ class UserDetailViewController: UIViewController {
     //MARK: - internal properties
     
     var viewModel: UserViewModel?
-    weak var coordinator: MainCoordinator?
     
     //MARK: - outlets
     @IBOutlet weak var avatarImage: UIImageView!

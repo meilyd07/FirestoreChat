@@ -12,7 +12,6 @@ class ChatsViewController: UIViewController {
     
     //MARK: - internal properties
     var viewModel: ChatsViewModel?
-    weak var coordinator: MainCoordinator?
     
     //MARK: - outlets
     @IBOutlet weak var tableView: UITableView!
@@ -23,7 +22,7 @@ class ChatsViewController: UIViewController {
         self.title = "Chats"
         viewModel?.fetchData{ error in
             if let error = error {
-                self.coordinator?.showAlert(title: "Unable to fetch chats", message: error, controller: self)
+                self.viewModel?.showAlert(title: "Unable to fetch chats", message: error)
             }
             else {
                 
@@ -72,16 +71,10 @@ extension ChatsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if let viewModel = viewModel {
-            let chatViewModel = ChatViewModel(chatId: viewModel.items[indexPath.row].chatId, chatDescription: viewModel.items[indexPath.row].description)
-            coordinator?.showChat(viewModel: chatViewModel, controller: self)
-        }
+        viewModel?.showChat(index: indexPath.row)
     }
     
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        if let viewModel = viewModel {
-            let chatInfoViewModel = ChatInfoViewModel(chatId: viewModel.items[indexPath.row].chatId, description: viewModel.items[indexPath.row].description, logoUrl: viewModel.items[indexPath.row].logoUrl)
-            coordinator?.showChatInfo(viewModel: chatInfoViewModel)
-        }
+        viewModel?.showChatInfo(index: indexPath.row)
     }
 }

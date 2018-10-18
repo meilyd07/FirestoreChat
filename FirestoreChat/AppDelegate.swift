@@ -12,9 +12,6 @@ import Firebase
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    //MARK: - private properties
-    private var coordinator: MainCoordinator?
-    
     //MARK: - internal properties
     var window: UIWindow?
     
@@ -22,14 +19,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
-
-        let navController = UINavigationController()
-        coordinator = MainCoordinator(navigationController: navController)
-        coordinator?.start()
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = navController
-        window?.makeKeyAndVisible()
         
+        //login is not implemented, select current user on profile tab
+        if UserDefaults.standard.dictionary(forKey: "defaultUser") == nil {
+            let dict = ["name": "Marusya", "userId": "b91K10j8XLw4CYCCbkGE"]
+            UserDefaults.standard.setValue(dict, forKeyPath: "defaultUser")
+        }
+    
+        window = UIWindow(frame: UIScreen.main.bounds)
+        
+        if let tabBar = Router.shared.tabBarController() {
+          window?.rootViewController = tabBar
+        }
+        window?.makeKeyAndVisible()
         return true
     }
 
